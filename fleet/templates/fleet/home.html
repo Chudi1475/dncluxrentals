@@ -1,0 +1,23 @@
+{% extends 'fleet/base.html' %}
+{% block title %}Home — DNC Lux Rentals{% endblock %}
+{% block content %}
+<div id="homeCarousel" class="carousel slide" data-bs-ride="carousel">
+  <div class="carousel-inner">
+    {% for v in featured %}
+      <div class="carousel-item {% if forloop.first %}active{% endif %}">
+        <img src="{{ v.image.url }}" class="d-block w-100" alt="{{ v.name }}">
+        <div class="carousel-caption">
+          <h5>{{ v.name }}</h5>
+          <p>{{ v.description|truncatewords:20 }}</p>
+        </div>
+      </div>
+    {% endfor %}
+  </div>
+  <button class="carousel-control-prev" data-bs-target="#homeCarousel" data-bs-slide="prev">
+    <span class="carousel-control-prev-icon"></span>
+  </button>
+  <button class="carousel-control-next" data-bs-target="#homeCarousel" data-bs-slide="next">
+    <span class="carousel-control-next-icon"></span>
+  </button>
+</div>
+{% endblock %}
